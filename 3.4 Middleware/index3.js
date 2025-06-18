@@ -2,7 +2,6 @@ import express from "express";
 
 const app = express();
 const port = 3000;
-
 app.use(logger);
 
 app.get("/", (req, res) => {
@@ -12,3 +11,9 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+function logger(req,res,next){
+  console.log("Request url: "+ req.url);
+  console.log("Request method: "+req.method);
+  next();
+}
